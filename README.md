@@ -27,3 +27,9 @@
 >
 > radix 一个介于2和36之间的整数(数学系统的基础)，表示上述字符串的基数。默认为10。 返回值 返回一个整数或NaN
 >
+
+##### sort()方法用于对数组的元素进行排序。默认排序顺序为按字母升序。
+> 升序: XXX.sort(function(a,b){return a-b});
+>
+> 降序: XXX.sort(function(a,b){return b-a});
+>
