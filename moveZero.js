@@ -31,3 +31,16 @@ function foo(a) {
 foo(12)
 
 console.log([3,15,8,29,102,22].sort()) //[ 102, 15, 22, 29, 3, 8 ]
+
+
+var obj = {
+    '2':3,
+    '3':4,
+    'length':2,
+    'splice': Array.prototype.splice,
+    'push': Array.prototype.push
+
+}
+obj.push(1)
+obj.push(2)
+console.log(obj)
