@@ -68,6 +68,7 @@ console.log(result);
 
 let arryn = ['1,3,2','1,89,37,4','1,4,2']
 let m = arryn.toString().split(",").sort((a,b)=>{ return a-b}).map(Number) 
+console.log(m)
 let n = [... new Set(m)]   // 去重
 console.log(n)
 
