@@ -37,13 +37,28 @@ console.log(d)
 //链式操作+给Number/Object对象添加方法
 
 
-Number.prototype.add = function (n){
-    return this.valueOf() + n 
+Number.prototype.add = function (n) {
+    return this.valueOf() + n
 }
 
-Number.prototype.minus = function (n){
-    return this.valueOf() - n 
+Number.prototype.minus = function (n) {
+    return this.valueOf() - n
 }
 
 console.log((5).add(3).minus(2))
 
+var obj = { 1: 222, 2: 333, 5: 888 }
+
+function hander(obj){
+    let arr = []
+    for(let i = 1;i <= 12;i++){
+        if(obj[i]){
+            arr.push(obj[i])
+        }else{
+            arr.push(null)
+        }
+    }
+    return arr
+}
+
+console.log(hander(obj))
