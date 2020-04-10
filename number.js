@@ -46,3 +46,4 @@ Number.prototype.minus = function (n){
 }
 
 console.log((5).add(3).minus(2))
+
