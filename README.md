@@ -53,3 +53,21 @@
 
 ##### from() 方法用于通过拥有 length 属性的对象或可迭代的对象来返回一个数组。
 
+##### split() 方法用于把一个字符串分割成字符串数组。
+
+> var str="How are you doing today?";
+>
+>var n=str.split(" ",3);
+>
+> // How,are,you
+
+>var str="How are you doing today?";
+>
+>var n=str.split("o");
+>
+> // H,w are y,u d,ing t,day?
+
+
+
+
+
