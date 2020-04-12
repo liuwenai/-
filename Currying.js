@@ -1,4 +1,7 @@
 // 柯里化 
+// 严格意义上的柯里化应该只接收一个参数
+
+
 
 // 普通函数
 
@@ -28,6 +31,9 @@ function add() {
     var _args = [].slice.call(arguments);
 
     // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
+
+    // 一个闭包是由函数和声明这个函数的词法环境组成的 -- MDN
+
     var adder = function () {
         var _adder = function() {
             // [].push.apply(_args, [].slice.call(arguments));
