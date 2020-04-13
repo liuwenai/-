@@ -6,6 +6,36 @@
 
 混杂着
 
+[.md语法入门](https://www.jianshu.com/p/399e5a3c7cc5)
+_.md语法入门_
+__md语法入门__
+*.md语法入门*
+**md语法入门**
+
+> 一级引用
+>> 二级引用
+>>> 三级引用
+>>>> 四级引用
+>>>>> 五级引用
+>>>>>> 六级引用
+
+```java
+
+//代码块
+```
+
+分割线
+
+---
+- - -
+------
+***
+* * *
+******
+___
+_ _ _
+______
+
 
 # javaScript
 ##### splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
@@ -55,30 +85,34 @@
 
 ##### split() 方法用于把一个字符串分割成字符串数组。
 
-> var str="How are you doing today?";
->
->var n=str.split(" ",3);
->
-> // How,are,you
+```javascript
 
->var str="How are you doing today?";
->
->var n=str.split("o");
->
-> // H,w are y,u d,ing t,day?
+var str="How are you doing today?";
+var n=str.split(" ",3);
+ // How,are,you
+
+var str="How are you doing today?";
+var n=str.split("o");
+ // H,w are y,u d,ing t,day?
+
+ ```
 
 ##### reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
 
 + reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
-
+**注意**  reduce() 对于空数组是不会执行回调函数的。
 
 ##### concat() 方法用于连接两个或多个字符串。
 
- `var str1="Hello ";
+```javascript
+
+ var str1="Hello ";
  var str2="world!";
  var str3=" Have a nice day!";
  var n = str1.concat(str2,str3);
-  // Hello world! Have a nice day!`
+  // Hello world! Have a nice day!
+
+  ```
 
 
 
