@@ -67,6 +67,20 @@
 >
 > // H,w are y,u d,ing t,day?
 
+##### reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+
++ reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+
+
+##### concat() 方法用于连接两个或多个字符串。
+
+ `var str1="Hello ";
+ var str2="world!";
+ var str3=" Have a nice day!";
+ var n = str1.concat(str2,str3);
+  // Hello world! Have a nice day!`
+
+
 
 
 

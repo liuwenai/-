@@ -1,6 +1,6 @@
 // 柯里化 
 // 严格意义上的柯里化应该只接收一个参数
-
+// 参数复用。本质上是降低通用性，提高适用性。
 
 
 // 普通函数
@@ -57,3 +57,38 @@ console.log(add(1)(2)(3))
 console.log(add(1, 2, 3)(4))
 console.log(add(1)(2)(3)(4)(5))
 console.log(add(2, 6)(1))
+
+
+function sub_curry(fn){
+    return function(){
+        return fn()
+    }
+}
+
+function curry(fn, length){
+    length = length || 4;
+    return function(){
+        if (length > 1) {
+            return curry(sub_curry(fn), --length)
+        }
+        else {
+            return fn()
+        }
+    }
+}
+
+var person = [{name: 'kevin'}, {name: 'daisy'}]
+
+var name = person.map(function(item){
+    return item.name
+})
+ 
+console.log(name)   // ['kevin','daisy']
+
+var prop = curry(function(key,oj){
+    return obj[key]
+})
+
+var name = person.map(prop('name'))
+
+console.log(name)   // ['kevin','daisy']
