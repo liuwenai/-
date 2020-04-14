@@ -133,3 +133,13 @@ cat.changeAge(7)
 
  var point = new Point(2,3)
  point.toString()
+
+ // JavaScript继承
+
+ // 构造函数绑定：使用call或apply方法，将父对象的构造函数绑定在子对象上
+
+ function Dog(name,color){
+     Animal.apply(this,arguments)
+     this.name = name
+     this.color = color
+ }
