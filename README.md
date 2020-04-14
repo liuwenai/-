@@ -38,10 +38,15 @@ ______
 
 
 # javaScript
+
++ ECMAScript(核心)：JavaScript语言基础
++ DOM(文档对象模型)：规定了访问HTML和XML的接口
++ BOM(浏览器对象模型)：提供了浏览器窗口之间进行交互的对象和方法
+
 ##### splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
 ###### splice() 从第0位（第一个）开始删除两个元素，并增加'','',''
-```javascript
 
+```javascript
  var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
  var removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
  console.log(removed)
