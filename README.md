@@ -19,6 +19,25 @@ __md语法入门__
 >>>>> 五级引用
 >>>>>> 六级引用
 
+//例子一
+|123|234|345|
+|:-|:-:|-:|
+|abc|bcd|cde|
+|abc|bcd|cde|
+|abc|bcd|cde|
+//例子二
+|123|234|345|
+|:---|:---:|---:|
+|abc|bcd|cde|
+|abc|bcd|cde|
+|abc|bcd|cde|
+//例子三
+123|234|345
+:-|:-:|-:
+abc|bcd|cde
+abc|bcd|cde
+abc|bcd|cde
+
 ```java
 
 //代码块
