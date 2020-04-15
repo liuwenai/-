@@ -117,6 +117,28 @@ fn = function (x){
 
 */
 
+// 闭包表示包括不被计算的变量的函数，也就是说函数可以使用函数之外定义的变量
+var sMessage = 'hello world'
+
+function sayHello(){
+    console.log(sMessage)
+}
+sayHello()
+
+var iBassNum = 10
+
+function addNum(sum1,sum2){
+    function doAdd(){
+        return sum1 + sum2
+    }
+    return doAdd()
+}
+
+console.log(addNum(15,68))
+
+
+
+
 function fn(){
     var max = 10;
     return function bar(x){
