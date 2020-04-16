@@ -7,6 +7,7 @@
 混杂着
 
 [.md语法入门](https://www.jianshu.com/p/399e5a3c7cc5)
+
 _.md语法入门_
 __md语法入门__
 *.md语法入门*
@@ -146,11 +147,11 @@ ______
 ```javascript
 
 var str="How are you doing today?";
-var n=str.split(" ",3);
+var n = str.split(" ",3);
  // How,are,you
 
-var str="How are you doing today?";
-var n=str.split("o");
+var str = "How are you doing today?";
+var n = str.split("o");
  // H,w are y,u d,ing t,day?
 
  ```
@@ -164,13 +165,17 @@ var n=str.split("o");
 
 ```javascript
 
- var str1="Hello ";
- var str2="world!";
- var str3=" Have a nice day!";
+ var str1 = "Hello ";
+ var str2 = "world!";
+ var str3 = " Have a nice day!";
  var n = str1.concat(str2,str3);
   // Hello world! Have a nice day!
 
   ```
+***
+
+
+Vue生命周期
 
 
 
