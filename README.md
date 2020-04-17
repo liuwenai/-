@@ -270,6 +270,20 @@ HTML **超文本标记语言**
     ....
 
     #### ID选择器：规定用`#`来定义
+    #### 类选择器：规定用`.`来定义
+     **类上样式，id上行为**
 
-    
+
+     CSS画三角形
+
+     ```css
+     .div1 {
+            width: 0;
+            height: 0;
+            border-top: 30px solid red;
+            /* 通过改变 border-left 和 border-right 中的像素值，来改变三角形的形状 */
+            border-left: 30px solid transparent;
+            border-right: 20px solid transparent;
+        }
+     ```
 
