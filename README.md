@@ -244,7 +244,7 @@ HTML **超文本标记语言**
 
   #### 拖拽元素
 
-    页面设置了`draggable = 'true'`属性元素
+    页面设置了 `draggable = 'true'` 属性元素
 
      + `ondragstart` 拖拽开始时调用
      + `ondragleave` **鼠标离开拖拽元素时**调用
@@ -258,7 +258,7 @@ HTML **超文本标记语言**
 
     CSS
 
-    #### background的常见背景属性
+  #### background的常见背景属性
 
     + `background-color:#ff99ff`，设置元素的背景色
     + `background-image:url(images/2.gif)`，图像设置成背景
@@ -269,8 +269,8 @@ HTML **超文本标记语言**
     + `background-position`，背景定位
     ....
 
-    #### ID选择器：规定用`#`来定义
-    #### 类选择器：规定用`.`来定义
+  #### ID选择器：规定用`#`来定义
+  #### 类选择器：规定用`.`来定义
      **类上样式，id上行为**
 
 
