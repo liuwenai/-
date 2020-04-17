@@ -205,10 +205,49 @@ Web
 
 
 
-HTML
+HTML **超文本标记语言**
   + 两个标记 . 和 .. 分表代表当前目录和上一层目录。
 
   #### 定义列表`<dl>`
   + `<dt>` :列表的标题，这个标签是必须的
   + `<dl>` :列表的列表项，如果不需要它，可以不加
+
+  #### 内嵌框架`<iframe>`
+     **`<iframe>`** 是 **`<body>`**的子标记
+
+   ```html
+    <body>
+
+ 	   <a href="文字页面.html" target="myframe">默认显示文字页面</a><br>
+ 	   <a href="图片页面.html" target="myframe">点击进入图片页面</a><br>
+ 	   <a href="表格页面.html" target="myframe">点击进入表格页面</a><br>
+
+ 	   <iframe src="文字页面.html" width="400" height="400" name="myframe"></iframe>
+ 	   <br>
+ 	   嘿嘿
+    </body>
+   ```
+
+  #### H5新增语义标签
+
+   + `<section>` 表示区块
+   + `<article>` 表示文章。 文章、评论、帖子、博客
+   + `<header>` 页眉
+   + `<footer>` 页脚
+   + `<nav>` 导航
+   + `<aside>` 侧边栏
+   + `<figure>` 媒介内容分组
+   + `<mark>` 标记
+   + `<progress>` 进度
+   + `<time>` 日期
+
+
+  #### 拖拽元素
+
+    页面设置了`draggable = 'true'`属性元素
+
+    ```html
+        <div class="box" draggable="true"></div>
+    ```
+    
 
