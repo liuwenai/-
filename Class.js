@@ -135,11 +135,29 @@ cat.changeAge(7)
  point.toString()
 
  // JavaScript继承
+ // 原型prototype机制或apply和call方法去实现较简单，建议使用构造函数与原型混合方式。
+
+ function Per(){
+    this.name = 'Wang'
+}
+
+function Child(){
+    this.age = 13
+}
+
+Child.prototype = new Per();   //通过原型，继承Per
+
+var demo = new Child()
+console.log(demo.name)
+console.log(demo.age)
 
  // 构造函数绑定：使用call或apply方法，将父对象的构造函数绑定在子对象上
 
- function Dog(name,color){
-     Animal.apply(this,arguments)
-     this.name = name
-     this.color = color
+ function Parent(){
+     this.name = "parent"
+ }
+
+ function Children(){
+     Parent.call(this)
+     this.type = "children";
  }

@@ -118,6 +118,8 @@ fn = function (x){
 */
 
 // 闭包表示包括不被计算的变量的函数，也就是说函数可以使用函数之外定义的变量
+
+// 闭包的作用：间接访问一个变量
 var sMessage = 'hello world'
 
 function sayHello(){

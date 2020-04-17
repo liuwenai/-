@@ -62,3 +62,11 @@ function hander(obj){
 }
 
 console.log(hander(obj))
+
+
+var arr = [1,2,3]
+for (let i = 0; i < arr.length; i++) {
+    setTimeout(function(){
+        console.log(i)
+    },3000)    
+}
