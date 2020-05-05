@@ -214,7 +214,7 @@ HTML **超文本标记语言**
 
 
 #### 内嵌框架`<iframe>`
-  **`<iframe>`** 是 **`<body>`**的子标记
+**`<iframe>`** 是 **`<body>`**的子标记
 
    ```html
     <body>
@@ -244,8 +244,7 @@ HTML **超文本标记语言**
 
 
 #### 拖拽元素
-
-  页面设置了 `draggable = 'true'` 属性元素
+页面设置了 `draggable = 'true'` 属性元素
 
      + `ondragstart` 拖拽开始时调用
      + `ondragleave` **鼠标离开拖拽元素时**调用
@@ -268,15 +267,13 @@ HTML **超文本标记语言**
         - `repeat-x` 横向平铺
         - `repeat-y` 纵向平铺
     + `background-position`，背景定位
-    ....
+....
 
 #### ID选择器：规定用`#`来定义
 
 #### 类选择器：规定用`.`来定义
-     **类上样式，id上行为**
-
-
-     CSS画三角形
+**类上样式，id上行为**
+CSS画三角形
 
      ```css
      .div1 {
@@ -288,4 +285,14 @@ HTML **超文本标记语言**
             border-right: 20px solid transparent;
         }
      ```
+
+###### Git
+`git branch`  查看分支
+`git branch <name>`  创建分支
+`git checkout/switch <name>` 切换分支
+`git checkout -b <name>/git switch -c <name>`  创建并切换分支到
+`git merge <name>`   合并某分支到当前分支
+`git branch -d <name>`   删除分支
+`git rebase`  合并分支
+``
 
