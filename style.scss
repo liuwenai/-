@@ -1,0 +1,377 @@
+$w: 100px;
+$h: 200px;
+$red: red;
+
+.header {
+  width: $w;
+  height: $h;
+  color: $red;
+  h1 {
+    width: $w;
+    height: $h;
+    background-color: $red;
+  }
+}
+
+// $，然后可以引用该名称而不是值本身。
+// _base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+// style.scss
+@use 'base';
+.inverse {
+  background-color: base.$primary-color;
+  color: white;
+}
+
+/*
+.inverse{
+    background-color:#333;
+    color:white;
+}
+*/
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+/*  等价于=>
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  nav li {
+    display: inline-block;
+  }
+  nav a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+*/
+
+//使用mixin，可以创建要在整个站点中重复使用的CSS声明组。
+//甚至可以传递值以使混入更加灵活。mixin的很好用法是用于供应商前缀。
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+.box {
+  @include transform(rotate(30deg));
+}
+/*
+.box{
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+*/
+
+@mixin define-emoji($name,$glyph) {
+    span.emoji-#{$name}{
+        font-family: IconFont;
+        font-variant: normal;
+        font-weight: normal;
+        content: $glyph;
+    }
+}
+@include define-emoji("women-holding-hands","👭" )
+
+
+@charset "UTF-8"
+span.emoji-women-holding-hands{
+    font-family: IconFont;
+        font-variant: normal;
+        font-weight: normal;
+        content: "👭";
+}
+
+@mixin prefix($property,$value,$prefixes) {
+    @each $perfix in $prefixes {
+        -#{$perfix}-#{$prefixes}: $value;
+    }
+    #{$property}: $value;
+}
+
+.gary{
+    @include prefix(filter,grayscale(50%) ,moz webkit )
+}
+
+.gary{
+    -moz-filter:grayscale(50%);
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+}
+
+
+//@extend可以将一组CSS属性从一个选择器共享到另一个选择器。它有助于使Sass保持非常干燥
+
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+%equal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+/*
+.message{
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+
+.success{
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+    border-color: green;
+}
+*/
+
+.container {
+  width: 100%;
+}
+
+article[role='main'] {
+  float: left;
+  width: 600px / 900px * 100%;
+}
+
+aside[role='complementary'] {
+  float: right;
+  width: 300px / 960px * 100%;
+}
+
+/*
+.container{
+    width: 100%;
+}
+
+article[role="main"] {
+    float: left;
+    width: 62.5%;
+  }
+  
+  aside[role="complementary"] {
+    float: right;
+    width: 31.25%;
+  }
+  */
+
+// !default
+// 这一个值分配给变量仅当该变量没有被定义，或者其值null。否则，将使用现有值。
+// 要使用配置加载模块，请编写@use <url> with (<variable>: <value>, <variable>: <value>)。
+// 配置的值将覆盖变量的默认值。只能!default配置在样式表的顶层带有标志的变量。
+
+// _library.scss
+$black: #000 !default;
+$border-radius: 0.25rem !default;
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+
+code {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+// style.scss
+
+@use 'library' with(
+    $black: #222,  // rgb(34,34,34)
+    $border-radius: 0.1rem
+);
+
+
+code {
+  border-radius: 0.1rem;
+  box-shadow: 0 0.5rem 1rem rgba(34, 34, 34, 0.15);
+}
+
+// 顶层声明变量global。可以在模块的任何位置对其进行访问。
+// 在块中声明的代码（SCSS中的花括号或Sass中的缩进代码）通常是local，并且只能在声明它们的块中访问。
+
+$global-variable: global value;
+
+.content{
+    $local-variable: local value;
+    global: $global-variable;
+    local: $local-variable;
+}
+
+.sidebar{
+    global: $global-variable
+}
+
+.content {
+    global: global value;
+    local: local value;
+  }
+  
+  .sidebar {
+    global: global value;
+  }
+
+// 遮蔽
+
+$variable: global value;
+.content{
+    $variable: local value;
+    value: $variable;
+}
+.sidebar{
+    value: $variable;
+}
+
+.content{
+    value: local value;
+}
+.sidebar{
+    value: global value;
+}
+
+// 如果需要在局部范围内（例如在mixin中）设置全局变量的值，则可以使用该!global标志。
+// 标记为as的变量声明!global将始终分配给全局范围。
+// 该!global标志只能用于设置已在文件顶层声明的变量。它可能不用于声明新变量。
+$variable: first global value;
+.content{
+    $variable: second globel value !global;
+    value: $variable;
+}
+.sidebar{
+    value: $variable;
+}
+
+.content .sidebar{
+   value: second global value; 
+}
+
+
+// 
+
+$dark-theme:true !default;
+$primary-color:#f8bbd0 !default;
+$accent-color:#6a1b9a !default;
+@if $dark-theme {
+    $primary-color: darken($primary-color,60%);
+    $accent-color: lighten($accent-color,60%);
+}
+
+.button{
+    background-color: $primary-color;
+    border: 1px solid $accent-color;
+    border-radius: 3px;
+}
+
+.button{
+    background-color:  #750c30;
+    border: 1px solid #f5ebfc;
+    border-radius: 3px;
+
+}
+
+@use "sass:map";
+$theme-color:(
+    "success": #28a745,
+    "info": #17a2b8,
+    "warning": #ffc107,
+);
+
+.alert{
+    background-color: map.get($theme-color,"warning");
+}
+
+.alert{
+    background-color: #ffc107;
+}
+
+// min() , max()
+$padding: 12px;
+.post{
+    padding-left: max(#{$padding}, evn(safe-area-inset-left));
+    padding-right: max(#{$padding}, evn(safe-area-inset-right));    
+}
+.sidebar{
+    padding-left: max($padding,20px);
+    padding-right: max($padding,20px);
+}
+
+.post{
+    padding-left: max(12px,evn(safe-area-inset-left));
+}
+.sidebar{
+    padding-left: 20px;
+}
+
+// 套料
+.enlarge{
+    font-size: 14px;
+    transition: {
+        property:font-size;
+        duration:4s;
+        delay:2s;
+    }
+
+    &:hover{font-size: 36px;}
+}
+/*
+.enlarge {
+  font-size: 14px;
+  transition-property: font-size;
+  transition-duration: 4s;
+  transition-delay: 2s;
+}
+.enlarge:hover {
+  font-size: 36px;
+}
+*/
+
+
+.info-page{
+    margin: auto{
+        bottom: 10px;
+        top: 2px;
+    }
+}
+
+/*
+.info-page{
+    margin:auto;
+    margin-bottom: 10px;
+    margin-top: 2px;
+}
+*/

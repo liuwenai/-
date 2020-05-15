@@ -273,6 +273,7 @@ HTML **超文本标记语言**
 
 #### 类选择器：规定用`.`来定义
 **类上样式，id上行为**
+
 CSS画三角形
 
      ```css
@@ -300,3 +301,18 @@ CSS画三角形
 #### MVP
 
 #### uuu
+
+
+### SASS
+
++ sass
++ scss
+
+sass以".sass"后缀为扩展名。 Sass 是基于 Ruby 写出来，所以其延续了 Ruby 的书写规范。在书写 Sass 时不带有大括号和分号，其主要是依靠严格的缩进方式来控制的。
+```html
+body
+   color:#fff;
+   background:#f36
+```
+scss以".scss"后缀为扩展名。可以将".css"直接换为".scss"
+
