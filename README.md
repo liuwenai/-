@@ -420,3 +420,7 @@ $("button").click(function(){
 ```
 $(selector).load(URL,data,callbacck)
 ```
+
+#### Node.js
+
++ Node.js是 JavaScript 语言在服务器端的运行环境（平台）。
