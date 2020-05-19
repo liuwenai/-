@@ -99,6 +99,29 @@ ______
 + 内部函数可以引用外层的参数和变量
 + 参数和变量不会被垃圾回收机制收回
 
+
+#### 浏览器的渲染过程
+
++ 解析HTML构建DOM树，并行请求css、image、js    
+```js
+ // 不需要DOM处理script节点。script位置不影响首屏显示时间
+ // 浏览器解析HTML是自上而下的线性过程，script作为HTML的一部分也遵守这个规则
+ // 因此，script会延迟DOMContentLoad，只显示其中部分首屏内容，从而印象首屏显示时间
+```
++ css文件下载完毕，构建CSSOM（CSS树）
++ CSSOM构建结束后，和DOM一起生成Render tree（渲染树）
++ Layout布局：计算每个节点在屏幕中的位置
++ 显示（Painting）：通过显卡吧把页面画到屏幕上
+
+#### DOM树和渲染树的区别
+
++ DOM树与HTML标签一一对应，包括head和隐藏元素
++ 渲染树不包括head和隐藏关系。每个节点都有对应的CSS属性
+
+#### js作用域 
+
++ function(){}内的区域，称谓函数作用域
+
 ***
 
 ##### splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
@@ -176,6 +199,55 @@ var n = str.split("o");
   // Hello world! Have a nice day!
 
   ```
+
+##### 正则表达式
+
+
++ `{m,n}`  最少出现m次，最多出现n次
++ `{m,}`  至少出现m次
++ `{m}` == `{m,m}` 表示出现m次
++ `[abc]`  出现a、b、c中的任何一个
++ `?` 等价于 `{0,1}` 表示出现或者不出现
++ `+` 等价于 `{1,}` 表示出现至少一次
++ `*` == `{0,}`  出现任意次数，有可能不出现
++ `\d`就是`[0-9]`
++ `\D`就是`[^0-9]`
++ `\w`就是`[0-9a-zA-Z_]`
++ `\W`就是`[0-9a-zA-Z_]`  非单词字符
++ `\s`就是`[ \t\v\n\r\f]`  空白字符
++ `\S`就是`[^ \t\v\n\r\f]`  非空白字符
++ `.`就是`[^\n\r\u2080\u2090]`  通配符，表示几乎任意字符
++ `(p1|p2|p3)` 表示其中任选其一  前面的匹配上后就不在匹配后面的了
+```js
+var r = /ab{2,5}c/g;
+var string = "abc abbc abbbc abbbbc abbbbbc abbbbbbc";
+console.log( string.match(regex) ); 
+// ['abbc','abbbc','abbbbc','abbbbbc']
+```
+
+`[abc]`  出现a、b、c中的任何一个
+
+```js
+/a[123]b/g
+// a1b a2b a3b
+```
+
+`[123456abcdefGHIJKLM]` 等价于 `[1-6a-fG-M]`  其中的任意字符
+```js
+// [-az] [az-] [a\-z]
+// 取得'-'、'a'、'z'任意字符
+```
+`[^abc]` 除了a、b、c之外的任意字符
+
+```js
+`\d`就是`[0-9]`
+`\D`就是`[^0-9]`
+`\w`就是`[0-9a-zA-Z_]`
+`\W`就是`[0-9a-zA-Z_]`  非单词字符
+`\s`就是`[ \t\v\n\r\f]`  空白字符
+`\S`就是`[^ \t\v\n\r\f]`  非空白字符
+`.`就是`[^\n\r\u2080\u2090]`  通配符，表示几乎任意字符
+```
 ***
 
 
@@ -300,8 +372,6 @@ CSS画三角形
 #### MVC
 #### MVP
 
-#### uuu
-
 
 ### SASS
 
@@ -316,3 +386,37 @@ body
 ```
 scss以".scss"后缀为扩展名。可以将".css"直接换为".scss"
 
+
+### JQuery
+
+[JQuery实例](https://www.runoob.com/jquery/jquery-examples.html)
+
+```html
+  $(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+  });
+```
+
++ 隐藏和显示
+
+```html
+$("button").click(function(){
+  $("p").toggle();
+});
+```
+
++ 动画 animate() 方法
+
+```html
+$("button").click(function(){
+  $("div").animate({left:'250px'});
+});
+```
+
++ load()
+
+```
+$(selector).load(URL,data,callbacck)
+```
