@@ -64,9 +64,26 @@ function hander(obj){
 console.log(hander(obj))
 
 
-var arr = [1,2,3]
-for (let i = 0; i < arr.length; i++) {
-    setTimeout(function(){
-        console.log(i)
-    },3000)    
+// var arr = [1,2,3]
+// for (let i = 0; i < arr.length; i++) {
+//     setTimeout(function(){
+//         console.log(i)
+//     },3000)    
+// }
+
+
+
+// 中位数
+const num1 = [1,5],num2 = [4]
+let arrr = []
+arrr = arrr.concat(num1,num2)
+console.log(arrr)
+let nums = arrr.sort(function(a,b){return a-b})
+var median
+if(nums.length %2){
+    median = nums[Math.floor(nums.length / 2)]
+}else{
+    var m = nums.length / 2
+    median = (nums[m - 1] + nums[m]) / 2
 }
+console.log(median)
