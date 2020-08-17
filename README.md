@@ -424,3 +424,95 @@ $(selector).load(URL,data,callbacck)
 #### Node.js
 
 + Node.js是 JavaScript 语言在服务器端的运行环境（平台）。
+
+
+#### 安装服务器的坑呀
+
+  第一次安装服务器，在安装过程中没有出现大众出现过的问题。<br>
+  首先是在开机时的提示进入bios模式用U盘启动；<br>
+  然后是按照网上教程开始进行安装，安装完成后重启再次进入bios使用磁盘启动；安装完成<br>
+  之后配置网络设置，使用内网 <br>
+    首先找到一台电脑，将其IP、子网掩码、网关、DNS全部配置到服务器网卡。然后自己的电脑要连接网线，将服务器和自己电脑的IP出于同一网段。<br>
+```js
+
+// 服务器ip
+   ip:202.75.0.62
+// 本机ip
+   ip:202.75.0.61
+
+// 可以访问外网
+
+apple@appledeMacBook-Air ~ % ping www.baidu.com
+PING www.a.shifen.com (14.215.177.38): 56 data bytes
+64 bytes from 14.215.177.38: icmp_seq=0 ttl=55 time=47.200 ms
+64 bytes from 14.215.177.38: icmp_seq=1 ttl=55 time=64.543 ms
+64 bytes from 14.215.177.38: icmp_seq=2 ttl=55 time=203.717 ms
+64 bytes from 14.215.177.38: icmp_seq=3 ttl=55 time=195.129 ms
+64 bytes from 14.215.177.38: icmp_seq=4 ttl=55 time=84.772 ms
+64 bytes from 14.215.177.38: icmp_seq=5 ttl=55 time=141.229 ms
+64 bytes from 14.215.177.38: icmp_seq=6 ttl=55 time=168.642 ms
+^C
+--- www.a.shifen.com ping statistics ---
+7 packets transmitted, 7 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 47.200/129.319/203.717/59.134 ms
+
+```
+
+#### 后台部署上服务器
+
+```js
+
+nohup java -jar xx.jar  &
+
+ps -ef |grep java
+
+```
+  首先是将后台打包，注意`application.yml`的变化，然后将打包后的文件上传至服务器。<br>
+
+  ```js
+// 3306是mysql端口，为了防止被攻击将其改变
+url: jdbc:mysql://127.0.0.1:3306/micronaut_tz?serverTimezone=GMT%2B8 
+// 服务器mysql名称和密码
+username: root
+password: qaz123
+
+```
+
+如果服务器运行报错，记得查看mysql端口`show global variables like 'port';`和java进程是否被占用`ps -ef |grep java` ，关闭进程`kill -9 PID号`。<br>
+
+```js
+//mysql
+apple@appledeMacBook-Air ~ % mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 851
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show global variables like 'port';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| port          | 3306  |
++---------------+-------+
+1 row in set (0.03 sec)
+
+mysql> 
+
+//进程占用
+apple@appledeMacBook-Air ~ % ps -ef|grep java 
+  501 69630 69280   0 10:01上午 ??         0:47.64 /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/bin/java -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CN -Duser.language=zh -Duser.variant -cp /Users/apple/.gradle/wrapper/dists/gradle-6.1-all/d7p1d05fks2n0h6nqsj2ogyq5/gradle-6.1/lib/gradle-launcher-6.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 6.1
+  501 69946 69043   0 10:08上午 ttys004    0:00.00 grep java
+apple@appledeMacBook-Air ~ % 
+
+```
+
+
+
