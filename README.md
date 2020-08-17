@@ -478,7 +478,8 @@ password: qaz123
 
 ```
 
-如果服务器运行报错，记得查看mysql端口`show global variables like 'port';`和java进程是否被占用`ps -ef |grep java` ，关闭进程`kill -9 PID号`。<br>
+如果服务器运行报错，记得查看mysql端口`show global variables like 'port';`、查看表名`show databases;`、创建表`create database 表名`<br>
+java进程是否被占用`ps -ef |grep java` ，关闭进程`kill -9 PID号`。<br>
 
 ```js
 //mysql
@@ -504,7 +505,55 @@ mysql> show global variables like 'port';
 +---------------+-------+
 1 row in set (0.03 sec)
 
-mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| micronaut_tz       |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+// 创建表
+mysql> create database liu;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| liu                |
+| micronaut_tz       |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+// 删除表
+mysql> drop database liu;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| micronaut_tz       |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> \q
+Bye
+apple@appledeMacBook-Air ~ % 
+
 
 //进程占用
 apple@appledeMacBook-Air ~ % ps -ef|grep java 
