@@ -1,6 +1,7 @@
 let KMP = (S,T) => {
   let  i = 0,j = 0;
   let next= [T.length]
+  console.log(next)
   next[0] = -1
   while( i < S.length && j < T.length){
       if(j === -1 || S[i] === T[j]){
@@ -8,6 +9,7 @@ let KMP = (S,T) => {
           j++
       }else{         
           j = next[j]
+          console.log(j)
       }
   }
   if( j === T.length){
