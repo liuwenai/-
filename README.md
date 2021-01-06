@@ -486,7 +486,6 @@ password: qaz123
 
 如果服务器运行报错，记得查看mysql端口`show global variables like 'port';`、查看表名`show databases;`、创建表`create database 表名;`<br>
 java进程是否被占用`ps -ef |grep java` ，关闭进程`kill -9 PID号`。<br>
-
 其中将服务打包上传至服务器时，用`filezilla`,使用sftp安全传输协议，同时注意sftp协议端口与ssh端口一致。<br>
 
 ```js
